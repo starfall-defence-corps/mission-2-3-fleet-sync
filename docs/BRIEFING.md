@@ -218,9 +218,18 @@ Run `make test` to verify.
 
 | File | Purpose |
 |------|---------|
-| `rolling-update.yml` | Phase 1 playbook (serial deploy) |
-| `roles/fleet_deploy/` | Phase 2+3 role (orchestrated deploy with error handling) |
-| `site.yml` | Phase 2+3 playbook calling the role |
+| `workspace/rolling-update.yml` | Phase 1 playbook (serial deploy) |
+| `workspace/roles/fleet_deploy/` | Phase 2+3 role (orchestrated deploy with error handling) |
+| `workspace/site.yml` | Phase 2+3 playbook calling the role |
+
+---
+
+## 7. GETTING STARTED
+
+1. Activate your environment: `source venv/bin/activate`
+2. All work goes in the `workspace/` directory — `cd workspace/`
+3. Stuck? Consult [HINTS.md](HINTS.md)
+4. Track your progress: [CHECKLIST.md](../CHECKLIST.md)
 
 ---
 
