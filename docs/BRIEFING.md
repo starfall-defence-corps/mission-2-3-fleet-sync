@@ -155,6 +155,22 @@ Extend your role to handle failures gracefully using `block/rescue/always`.
   max_fail_percentage: 25    # Allow 1 of 4 to fail
 ```
 
+### Detecting Pre-deploy Issues
+
+```yaml
+- name: Check for broken config
+  ansible.builtin.stat:
+    path: /etc/nginx/conf.d/broken.flag
+  register: broken_check
+
+- name: Abort if config is broken
+  ansible.builtin.fail:
+    msg: "Server has a broken configuration — triggering rescue"
+  when: broken_check.stat.exists
+```
+
+`ansible.builtin.stat` checks if a file exists. `ansible.builtin.fail` deliberately fails the task, which triggers the `rescue` block when used inside a `block`.
+
 ---
 
 ## 4. HAPROXY MANAGEMENT
