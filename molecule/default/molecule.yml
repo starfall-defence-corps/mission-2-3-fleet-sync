@@ -1,0 +1,34 @@
+dependency:
+  name: galaxy
+driver:
+  name: default
+platforms:
+  - name: sdc-app-1
+    managed: false
+    groups:
+      - app_servers
+  - name: sdc-app-2
+    managed: false
+    groups:
+      - app_servers
+  - name: sdc-app-3
+    managed: false
+    groups:
+      - app_servers
+  - name: sdc-app-4
+    managed: false
+    groups:
+      - app_servers
+  - name: sdc-lb
+    managed: false
+    groups:
+      - load_balancers
+  - name: sdc-monitor
+    managed: false
+    groups:
+      - monitoring
+provisioner:
+  name: ansible
+verifier:
+  name: testinfra
+  directory: tests/

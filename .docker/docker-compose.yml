@@ -1,0 +1,139 @@
+services:
+  # Application servers (4 nodes behind load balancer)
+  sdc-app-1:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: sdc-app-1
+    hostname: sdc-app-1
+    privileged: true
+    cgroup: host
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ./ssh-keys/authorized_keys:/home/cadet/.ssh/authorized_keys:ro
+    networks:
+      fleet_net:
+        ipv4_address: 172.34.0.11
+    ports:
+      - "2261:22"
+
+  sdc-app-2:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: sdc-app-2
+    hostname: sdc-app-2
+    privileged: true
+    cgroup: host
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ./ssh-keys/authorized_keys:/home/cadet/.ssh/authorized_keys:ro
+    networks:
+      fleet_net:
+        ipv4_address: 172.34.0.12
+    ports:
+      - "2262:22"
+
+  sdc-app-3:
+    build:
+      context: .
+      dockerfile: Dockerfile.app
+    container_name: sdc-app-3
+    hostname: sdc-app-3
+    privileged: true
+    cgroup: host
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ./ssh-keys/authorized_keys:/home/cadet/.ssh/authorized_keys:ro
+    networks:
+      fleet_net:
+        ipv4_address: 172.34.0.13
+    ports:
+      - "2263:22"
+
+  # App server 4 — has a planted failure flag
+  sdc-app-4:
+    build:
+      context: .
+      dockerfile: Dockerfile.app-broken
+    container_name: sdc-app-4
+    hostname: sdc-app-4
+    privileged: true
+    cgroup: host
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ./ssh-keys/authorized_keys:/home/cadet/.ssh/authorized_keys:ro
+    networks:
+      fleet_net:
+        ipv4_address: 172.34.0.14
+    ports:
+      - "2264:22"
+
+  # Load balancer (HAProxy)
+  sdc-lb:
+    build:
+      context: .
+      dockerfile: Dockerfile.lb
+    container_name: sdc-lb
+    hostname: sdc-lb
+    privileged: true
+    cgroup: host
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ./ssh-keys/authorized_keys:/home/cadet/.ssh/authorized_keys:ro
+    networks:
+      fleet_net:
+        ipv4_address: 172.34.0.20
+    ports:
+      - "2265:22"
+      - "8080:80"
+      - "8404:8404"
+
+  # Monitoring node (Rocky Linux)
+  sdc-monitor:
+    build:
+      context: .
+      dockerfile: Dockerfile.monitor
+    container_name: sdc-monitor
+    hostname: sdc-monitor
+    privileged: true
+    cgroup: host
+    tmpfs:
+      - /run
+      - /run/lock
+      - /tmp
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
+      - ./ssh-keys/authorized_keys:/home/cadet/.ssh/authorized_keys:ro
+    networks:
+      fleet_net:
+        ipv4_address: 172.34.0.30
+    ports:
+      - "2266:22"
+
+networks:
+  fleet_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.34.0.0/24
