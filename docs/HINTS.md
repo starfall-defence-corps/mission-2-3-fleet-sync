@@ -1,5 +1,7 @@
 # Mission 2.3: Fleet-Wide Operations — Hints
 
+> Back to: [Briefing](BRIEFING.md) | [Checklist](../CHECKLIST.md)
+
 ## Troubleshooting
 
 **SSH issues**: Run `make setup` first. Check `docker ps` to verify all 6 containers are running.
