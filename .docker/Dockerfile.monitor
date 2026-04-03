@@ -2,7 +2,7 @@ FROM rockylinux:9
 
 ENV container=docker
 
-RUN dnf -y install \
+RUN dnf -y install --allowerasing \
     systemd \
     openssh-server \
     python3 \
