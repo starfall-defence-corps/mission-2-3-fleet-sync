@@ -1,4 +1,4 @@
-.PHONY: doctor help setup test reset destroy ssh-app-1 ssh-app-2 ssh-app-3 ssh-app-4 ssh-lb ssh-monitor
+.PHONY: doctor submit help setup test reset destroy ssh-app-1 ssh-app-2 ssh-app-3 ssh-app-4 ssh-lb ssh-monitor
 
 help: ## Show available commands
 	@echo ""
@@ -17,6 +17,9 @@ setup: ## Launch fleet + load balancer (6 containers)
 
 test: ## Run ARIA verification
 	@bash scripts/check-work.sh
+
+submit: ## Submit your work for ARIA review (branch, commit, push, PR)
+	@bash $(ROOT_DIR)/scripts/submit.sh
 
 reset: ## Destroy and rebuild all nodes
 	@bash scripts/reset-lab.sh
