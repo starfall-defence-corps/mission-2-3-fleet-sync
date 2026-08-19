@@ -1,5 +1,7 @@
 # Starfall Defence Corps Academy
 
+> 🧭 [← 2.2 Compliance as Code](https://github.com/starfall-defence-corps/mission-2-2-compliance-as-code) · **You are here: 2.3 Fleet Sync** · [2.4 Defence in Depth →](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth) · [🏠 Academy Hub](https://github.com/starfall-defence-corps/sdc-academy)
+
 ## Mission 2.3: Fleet-Wide Operations
 
 > *"Deploy to all 4 at once and the fleet goes dark. Deploy one at a time, handle failures, keep the load balancer green. That's fleet operations."*
