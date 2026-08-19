@@ -1,4 +1,4 @@
-.PHONY: help setup test reset destroy ssh-app-1 ssh-app-2 ssh-app-3 ssh-app-4 ssh-lb ssh-monitor
+.PHONY: doctor help setup test reset destroy ssh-app-1 ssh-app-2 ssh-app-3 ssh-app-4 ssh-lb ssh-monitor
 
 help: ## Show available commands
 	@echo ""
@@ -8,6 +8,9 @@ help: ## Show available commands
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | \
 		awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'
 	@echo ""
+
+doctor: ## Check your machine is mission-ready (Docker, ports, tools)
+	@bash $(ROOT_DIR)/scripts/doctor.sh
 
 setup: ## Launch fleet + load balancer (6 containers)
 	@bash scripts/setup-lab.sh
