@@ -1,4 +1,5 @@
 .PHONY: doctor submit help setup test reset destroy ssh-app-1 ssh-app-2 ssh-app-3 ssh-app-4 ssh-lb ssh-monitor
+ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
 
 help: ## Show available commands
 	@echo ""
