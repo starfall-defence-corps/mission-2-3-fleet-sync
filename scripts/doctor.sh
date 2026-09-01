@@ -62,19 +62,19 @@ fi
 SDC_RUNNING=$(docker ps --format '{{.Names}}' 2>/dev/null | grep -c '^sdc-' || true)
 if [ "${SDC_RUNNING:-0}" -gt 0 ]; then
     THIS_LAB=$(docker ps --format '{{.Names}}' 2>/dev/null | grep '^sdc-' | tr '\n' ' ')
-    warn "SDC lab containers already running: ${THIS_LAB}" "If these belong to another mission, run 'make destroy' there first — all labs share ports 2221-2223"
+    warn "SDC lab containers already running: ${THIS_LAB}" "If these belong to another mission, run 'make destroy' there first — this lab uses ports 2261-2266, 8080, 8404"
 else
     PORTS_BUSY=""
-    for port in 2221 2222 2223; do
+    for port in 2261 2262 2263 2264 2265 2266 8080 8404; do
         if (exec 3<>"/dev/tcp/127.0.0.1/$port") 2>/dev/null; then
             exec 3>&- 3<&- 2>/dev/null
             PORTS_BUSY="$PORTS_BUSY $port"
         fi
     done
     if [ -n "$PORTS_BUSY" ]; then
-        fail "Ports 2221-2223 free" "Port(s)${PORTS_BUSY} in use — another mission lab or service is listening. Run 'make destroy' in the other mission, or free the port"
+        fail "Ports 2261-2266, 8080, 8404 free" "Port(s)${PORTS_BUSY} in use — another mission lab or service is listening. Run 'make destroy' in the other mission, or free the port"
     else
-        pass "Ports 2221-2223 free"
+        pass "Ports 2261-2266, 8080, 8404 free"
     fi
 fi
 
