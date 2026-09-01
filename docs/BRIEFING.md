@@ -118,7 +118,7 @@ Extend your role to handle failures gracefully using `block/rescue/always`.
 ```yaml
 - name: Disable server in load balancer
   ansible.builtin.shell: |
-    echo "disable server app_servers/{{ inventory_hostname }}" | socat stdio /var/run/haproxy/admin.sock
+    echo "disable server app_servers/{{ haproxy_backend_name }}" | socat stdio /var/run/haproxy/admin.sock
   delegate_to: sdc-lb
 ```
 
@@ -127,7 +127,7 @@ Extend your role to handle failures gracefully using `block/rescue/always`.
 ```yaml
 - name: Pre-deploy health check
   ansible.builtin.uri:
-    url: http://localhost:8080/
+    url: http://sdc-lb/
     status_code: 200
   run_once: true
   delegate_to: sdc-monitor
