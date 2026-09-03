@@ -26,6 +26,7 @@ You are a Lieutenant at the Starfall Defence Corps Academy. You can harden syste
 ```bash
 git clone https://github.com/YOUR-USERNAME/mission-2-3-fleet-sync.git
 cd mission-2-3-fleet-sync
+make doctor
 make setup
 source venv/bin/activate
 ```
@@ -64,8 +65,10 @@ Stuck? [Hints](docs/HINTS.md) | Track progress: [Checklist](CHECKLIST.md)
 
 ```
 make help          Show available commands
+make doctor        Check your machine is mission-ready (Docker, ports, tools)
 make setup         Launch fleet + load balancer (6 containers)
 make test          Ask ARIA to verify your work
+make submit        Submit your work for ARIA review (branch, commit, push, PR)
 make reset         Destroy and rebuild all nodes
 make destroy       Tear down everything
 make ssh-app-1     SSH into sdc-app-1 (port 2261)
@@ -75,6 +78,8 @@ make ssh-app-4     SSH into sdc-app-4 (port 2264)
 make ssh-lb        SSH into sdc-lb (HAProxy, port 2265)
 make ssh-monitor   SSH into sdc-monitor (port 2266)
 ```
+
+> **Note:** `make submit` uses the [GitHub CLI](https://cli.github.com/) — install `gh` and run `gh auth login` once before your first submission.
 
 ## Useful URLs
 
