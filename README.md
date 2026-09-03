@@ -79,6 +79,8 @@ make ssh-lb        SSH into sdc-lb (HAProxy, port 2265)
 make ssh-monitor   SSH into sdc-monitor (port 2266)
 ```
 
+> **Note:** `make submit` uses the [GitHub CLI](https://cli.github.com/) — install `gh` and run `gh auth login` once before your first submission.
+
 ## Useful URLs
 
 - Load balancer: `http://localhost:8080`
