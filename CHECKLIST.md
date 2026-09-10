@@ -18,3 +18,5 @@
 - [ ] Deployment handles app-4 failure gracefully
 - [ ] Healthy servers remain in LB pool
 - [ ] `make test` — all phases pass
+
+**Next stop**: [Mission 2.4 — Defence in Depth](https://github.com/starfall-defence-corps/mission-2-4-defence-in-depth)
