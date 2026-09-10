@@ -16,6 +16,7 @@ You are a Lieutenant at the Starfall Defence Corps Academy. You can harden syste
 - Completed Missions 2.1–2.2
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (with Docker Compose v2)
 - [GNU Make](https://www.gnu.org/software/make/)
+- **Ansible**: provided by the lab — `make setup` builds a local venv with `ansible-core`; no host install needed
 - Python 3.10+ (with `python3-venv`)
 - Git
 

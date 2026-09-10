@@ -18,7 +18,7 @@
 
 **delegate_to vs run_once**: `delegate_to` runs the task on another host but in the context of the current host. `run_once` runs the task only once regardless of how many hosts are in the play.
 
-**max_fail_percentage math**: With 4 hosts and `max_fail_percentage: 25`, one host can fail. With `serial: 1`, each host is its own batch, so the percentage is calculated per batch.
+**max_fail_percentage math**: With 4 hosts and `max_fail_percentage: 25`, one host can fail. With `serial: 1`, each host is its own batch, so the percentage is calculated per batch. Note: a host recovered by a `rescue:` block does not count as failed — the play continues on it, so a rescued node never trips the threshold (Phase 3 relies on exactly this).
 
 **Need a clean slate**: Run `make reset` to rebuild all containers. Your workspace files are preserved.
 
