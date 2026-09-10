@@ -1,5 +1,7 @@
 # Mission 2.3: Fleet-Wide Operations — Hints
 
+> 📚 Deeper reference: [FM-1 — Ansible Module Reference](https://github.com/starfall-defence-corps/sdc-academy/blob/main/field-manuals/FM-1-ansible-reference.md)
+
 > Back to: [Briefing](BRIEFING.md) | [Checklist](../CHECKLIST.md)
 
 ## Troubleshooting
