@@ -46,7 +46,7 @@ You will do better.
      └────────────┘
 ```
 
-**SSH user**: `cadet` (key-based auth, key at `.ssh/cadet_key`)
+**SSH user**: `cadet` (key-based auth, key at `workspace/.ssh/cadet_key`)
 
 **Load balancer**: HAProxy at `http://localhost:8080`. Stats at `http://localhost:8404/stats`.
 
@@ -71,7 +71,7 @@ Write a playbook that deploys a new application page to all app servers using `s
 
 **Requirements**:
 - Playbook uses `serial: 1` (one server at a time)
-- Deploy the provided `templates/index.html.j2` to each server
+- Deploy the provided `workspace/templates/index.html.j2` to each server
 - Restart nginx after deploying
 - Verify the load balancer is still serving after each server update
 
@@ -227,7 +227,7 @@ Run `make test` to verify.
 ## 7. GETTING STARTED
 
 1. Activate your environment: `source venv/bin/activate`
-2. All work goes in the `workspace/` directory — `cd workspace/`
+2. All work goes in the `workspace/` directory — edit files there, but run `ansible-playbook`/`make` commands from the repo root (no `cd` required)
 3. Stuck? Consult [HINTS.md](HINTS.md)
 4. Track your progress: [CHECKLIST.md](../CHECKLIST.md)
 
