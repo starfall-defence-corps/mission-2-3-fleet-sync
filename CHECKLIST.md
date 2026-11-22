@@ -1,4 +1,4 @@
-# Mission 2.3: Fleet-Wide Operations — Checklist
+# Mission 2.3: Fleet Sync — Checklist
 
 ## Phase 1: Rolling Update Basics
 - [ ] rolling-update.yml exists with serial: 1

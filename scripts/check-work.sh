@@ -14,7 +14,7 @@ RESET='\033[0m'
 echo ""
 echo -e "  ${CYAN}${BOLD}=============================================="
 echo -e "  ARIA — Automated Review & Intelligence Analyst"
-echo -e "  Mission 2.3: Fleet-Wide Operations"
+echo -e "  Mission 2.3: Fleet Sync"
 echo -e "  ==============================================${RESET}"
 
 cd "$ROOT_DIR"
